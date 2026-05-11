@@ -1,0 +1,437 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>CDV — Catalina de Vasconcellos Marinsalda</title>
+  <meta name="description" content="CDV — Lo que queda. Portfolio editorial de Catalina de Vasconcellos Marinsalda. Diseño gráfico, materialidad y experiencia." />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Courier+Prime:ital,wght@0,400;0,700;1,400&family=Inter:wght@200;300;400;500;600;700;800;900&family=Patua+One&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/style.css" />
+</head>
+<body>
+  <div class="wood" aria-hidden="true"></div>
+  <div class="grain" aria-hidden="true"></div>
+
+  <aside class="textura-picker mono" aria-label="Probar texturas">
+    <button class="textura-picker__toggle" data-toggle aria-expanded="false">
+      <span class="textura-picker__dot" aria-hidden="true"></span>
+      Textura
+    </button>
+    <div class="textura-picker__panel" hidden>
+      <p class="textura-picker__label">Textura del papel</p>
+      <ul class="textura-picker__list"></ul>
+      <p class="textura-picker__hint">click para previsualizar · el color crema se mantiene</p>
+    </div>
+  </aside>
+  <div class="crop-marks" aria-hidden="true">
+    <span class="crop crop--tl"></span>
+    <span class="crop crop--tr"></span>
+    <span class="crop crop--bl"></span>
+    <span class="crop crop--br"></span>
+  </div>
+
+  <header class="topbar" role="banner">
+    <a href="#home" class="topbar__brand" aria-label="CDV — inicio">
+      <span class="mono">CDV</span>
+    </a>
+    <nav class="topbar__nav" aria-label="Secciones">
+      <a href="#sobre">Sobre mí</a>
+      <a href="#proyectos">Proyectos</a>
+      <a href="#proceso">Proceso</a>
+      <a href="#contacto">Contacto</a>
+    </nav>
+    <div class="topbar__meta mono">
+      <span class="dot" aria-hidden="true"></span>
+      <span>Buenos Aires · 2026</span>
+    </div>
+  </header>
+
+  <main>
+    <!-- 01 HOME -->
+    <section id="home" class="section home" data-folio="01">
+      <div class="folio mono"><span>01</span><span class="folio__rule"></span><span>Inicio</span></div>
+
+      <div class="home__inner">
+        <p class="home__eyebrow mono reveal">— Enfoque · Diseño editorial &amp; sensorial</p>
+        <h1 class="home__type reveal" aria-label="CDV — Catalina de Vasconcellos Marinsalda">
+          <span class="home__cdv">CDV</span>
+          <span class="home__full mono">Catalina de Vasconcellos Marinsalda · Diseñadora gráfica</span>
+        </h1>
+        <p class="home__quiet reveal">Marcar una huella.</p>
+
+        <div class="home__sidenote mono reveal">
+          <span class="home__sidenote-mark"></span>
+          <span>No es lo que se ve,<br/>sino lo que queda.</span>
+        </div>
+
+        <a class="home__scroll mono" href="#sobre" aria-label="Bajar a Sobre">
+          <span>Descender</span>
+          <span class="home__scroll-line" aria-hidden="true"></span>
+        </a>
+      </div>
+    </section>
+
+    <!-- 02 SOBRE -->
+    <section id="sobre" class="section sobre" data-folio="02">
+      <div class="folio mono"><span>02</span><span class="folio__rule"></span><span>Sobre mí</span></div>
+
+      <div class="sobre__intro">
+        <header class="section__head">
+          <p class="section__kicker mono">Capítulo · 02 — Sobre mí</p>
+          <h2 class="section__title">Quedarse en<br/>la huella.</h2>
+          <p class="section__sub">Diseño gráfico desde la materialidad y la experiencia del objeto. Una práctica que privilegia la pausa, el papel y el detalle.</p>
+        </header>
+
+        <figure class="portrait reveal">
+          <img src="assets/proyectos/retrato/catalina.png" alt="Retrato de Catalina de Vasconcellos Marinsalda" />
+          <figcaption class="mono">Catalina de Vasconcellos M.</figcaption>
+        </figure>
+      </div>
+
+      <div class="prose">
+        <article class="prose__block reveal">
+          <p class="prose__lead">Soy diseñadora gráfica. Mi trabajo nace en la materialidad: pienso el diseño como una experiencia que se queda, no que se consume.</p>
+          <aside class="prose__note mono">— Materialidad</aside>
+        </article>
+
+        <article class="prose__block reveal">
+          <p>Diseño sistemas visuales para marcas que entienden el objeto como una relación: con la mano, con el papel, con el tiempo.</p>
+          <aside class="prose__note mono">— Sistema</aside>
+        </article>
+
+        <article class="prose__block reveal">
+          <p>Trabajo entre lo editorial, la identidad y el packaging. Me interesa el ritmo, la pausa, la repetición que ordena.</p>
+          <aside class="prose__note mono">— Ritmo</aside>
+        </article>
+
+        <article class="prose__block reveal">
+          <p>Elijo materiales que envejecen bien: tintas, fibras, transparencias, registros. Todo aquello que deja rastro.</p>
+          <aside class="prose__note mono">— Permanencia</aside>
+        </article>
+
+        <article class="prose__block reveal">
+          <p>Cuando el diseño es un encuentro entre objeto y usuario, busco que ese encuentro sea sensible, sostenible y profundamente humano.</p>
+          <aside class="prose__note mono">— Sensibilidad</aside>
+        </article>
+      </div>
+
+      <ul class="capabilities mono">
+        <li class="reveal"><span>01</span> Identidad &amp; sistemas visuales</li>
+        <li class="reveal"><span>02</span> Diseño editorial</li>
+        <li class="reveal"><span>03</span> Packaging &amp; producto</li>
+        <li class="reveal"><span>04</span> Dirección de arte</li>
+        <li class="reveal"><span>05</span> Investigación material</li>
+      </ul>
+    </section>
+
+    <!-- 03 PROYECTOS -->
+    <section id="proyectos" class="section proyectos" data-folio="03">
+      <div class="folio mono"><span>03</span><span class="folio__rule"></span><span>Proyectos</span></div>
+
+      <header class="section__head">
+        <p class="section__kicker mono">Capítulo · 03 — Proyectos</p>
+        <h2 class="section__title">Selección<br/>de casos.</h2>
+        <p class="section__sub">Cada proyecto se lee como una pieza editorial: imagen, proceso, detalle, residuo.</p>
+      </header>
+
+      <!-- 01 · La Pingüino (destacado) -->
+      <article class="case reveal" id="caso-pinguino">
+        <header class="case__head">
+          <div>
+            <span class="case__num">№ 01 · Trabajo destacado</span>
+            <h3 class="case__title">La Pingüino.</h3>
+          </div>
+          <p class="case__meta mono">Editorial · Proyecto completo<br/>2024</p>
+        </header>
+
+        <div class="case__lead">
+          <p>Proyecto editorial completo: sistema gráfico, narrativa visual y construcción de marca. Una pieza que se piensa como objeto y como recorrido.</p>
+        </div>
+
+        <figure class="media media--wide reveal">
+          <img src="assets/proyectos/pinguino/portada.jpg" alt="La Pingüino · proyecto completo" loading="lazy" />
+          <figcaption class="mono">— La Pingüino · Pieza editorial destacada</figcaption>
+        </figure>
+      </article>
+
+      <!-- 02 · Casa Tomada (destacado) -->
+      <article class="case reveal" id="caso-casa-tomada">
+        <header class="case__head">
+          <div>
+            <span class="case__num">№ 02 · Trabajo destacado</span>
+            <h3 class="case__title">Casa tomada.</h3>
+          </div>
+          <p class="case__meta mono">Julio Cortázar<br/>2024</p>
+        </header>
+
+        <div class="flipbook-embed reveal">
+          <iframe src="https://heyzine.com/flip-book/b70facbc21.html?st=0"
+                  title="Casa tomada · flipbook interactivo"
+                  allow="fullscreen; clipboard-write"
+                  allowfullscreen
+                  loading="lazy"></iframe>
+          <p class="flipbook-embed__hint mono">— Flipbook interactivo · pasar páginas con click o flechas <a href="https://heyzine.com/flip-book/b70facbc21.html" target="_blank" rel="noopener">Abrir en pantalla completa ↗</a></p>
+        </div>
+      </article>
+
+      <!-- 03 · Perdidos en Tokio -->
+      <article class="case reveal" id="caso-tokio">
+        <header class="case__head">
+          <div>
+            <span class="case__num">№ 03 · Identidad de pieza</span>
+            <h3 class="case__title">Perdidos en Tokio.</h3>
+          </div>
+          <p class="case__meta mono">Cine · Afiche &amp; merch<br/>2024</p>
+        </header>
+
+        <div class="case__lead">
+          <p>Rediseño de identidad visual para la película de Sofia Coppola. Una propuesta delicada construida a partir de la flora japonesa, la ilustración manual y la pausa cinematográfica.</p>
+        </div>
+
+        <div class="case__grid">
+          <figure class="media media--tall reveal">
+            <img src="assets/proyectos/tokio/afiche.jpg" alt="Afiche · Perdidos en Tokio en cartel urbano" loading="lazy" />
+            <figcaption class="mono">— Afiche en vía pública</figcaption>
+          </figure>
+          <div class="case__text reveal">
+            <p class="mono case__caption">— Sistema</p>
+            <p>La identidad se extiende a una serie de pins coleccionables: aviones, ramas, flores. Pequeños objetos que se llevan, se intercambian, dejan rastro.</p>
+          </div>
+        </div>
+
+        <figure class="media media--wide reveal">
+          <img src="assets/proyectos/tokio/pines.jpg" alt="Línea de pines para Perdidos en Tokio" loading="lazy" />
+          <figcaption class="mono">— Línea de pins · Sistema extendido</figcaption>
+        </figure>
+
+        <p class="flipbook-link mono reveal">
+          <a href="https://heyzine.com/flip-book/31fef9a2c7.html" target="_blank" rel="noopener">Ver flipbook completo del proyecto ↗</a>
+        </p>
+      </article>
+
+      <!-- 04 · Rolling Stones -->
+      <article class="case reveal" id="caso-rolling">
+        <header class="case__head">
+          <div>
+            <span class="case__num">№ 04 · Pieza editorial</span>
+            <h3 class="case__title">The Rolling Stones.</h3>
+          </div>
+          <p class="case__meta mono">Editorial · Música<br/>2024</p>
+        </header>
+
+        <div class="case__lead case__lead--right">
+          <p>Revista monográfica sobre la banda. Sistema tipográfico construido sobre módulos rojos y amarillos: la composición misma se vuelve rebelde, pero ordenada.</p>
+        </div>
+
+        <figure class="media media--wide reveal">
+          <img src="assets/proyectos/rolling/tapa-contra.jpg" alt="Tapa y contratapa · Rolling Stones" loading="lazy" />
+          <figcaption class="mono">— Tapa &amp; contratapa</figcaption>
+        </figure>
+
+        <div class="case__grid case__grid--three">
+          <figure class="media media--tall reveal">
+            <img src="assets/proyectos/rolling/spread-1.jpg" alt="Spread 1 · Rolling Stones" loading="lazy" />
+            <figcaption class="mono">— Spread 01 · ¿Qué es el rock?</figcaption>
+          </figure>
+          <figure class="media media--tall reveal">
+            <img src="assets/proyectos/rolling/spread-2.jpg" alt="Spread 2 · Línea de tiempo Rolling Stones" loading="lazy" />
+            <figcaption class="mono">— Spread 02 · Línea de tiempo</figcaption>
+          </figure>
+          <figure class="media media--tall reveal">
+            <img src="assets/proyectos/rolling/spread-3.jpg" alt="Spread 3 · Características del rock" loading="lazy" />
+            <figcaption class="mono">— Spread 03 · Características</figcaption>
+          </figure>
+        </div>
+
+        <div class="case__notes mono reveal">
+          <span>— Paleta · Rojo &amp; amarillo</span>
+          <span>— Composición modular</span>
+          <span>— Mezcla serif &amp; sans</span>
+          <span>— Sistema editorial</span>
+        </div>
+      </article>
+
+      <!-- 05 · Vinilos Jazz / Blues -->
+      <article class="case reveal" id="caso-vinilos">
+        <header class="case__head">
+          <div>
+            <span class="case__num">№ 05 · Secuencia de packaging</span>
+            <h3 class="case__title">Vinilos · Jazz &amp; Blues.</h3>
+          </div>
+          <p class="case__meta mono">Packaging · Música<br/>2024</p>
+        </header>
+
+        <div class="case__lead">
+          <p>Tres tapas de vinilo para una colección imaginaria de jazz y blues. Cada tapa es un universo material distinto, pero comparten ritmo, paleta y respiración.</p>
+        </div>
+
+        <div class="case__grid case__grid--three">
+          <figure class="media media--square reveal">
+            <img src="assets/proyectos/vinilos/tapa1.jpg" alt="Tapa de vinilo 1" loading="lazy" />
+            <figcaption class="mono">— Tapa 01</figcaption>
+          </figure>
+          <figure class="media media--square reveal">
+            <img src="assets/proyectos/vinilos/tapa2.jpg" alt="Tapa de vinilo 2" loading="lazy" />
+            <figcaption class="mono">— Tapa 02</figcaption>
+          </figure>
+          <figure class="media media--square reveal">
+            <img src="assets/proyectos/vinilos/tapa3.jpg" alt="Tapa de vinilo 3" loading="lazy" />
+            <figcaption class="mono">— Tapa 03</figcaption>
+          </figure>
+        </div>
+
+        <figure class="media media--wide reveal">
+          <img src="assets/proyectos/vinilos/portada.jpg" alt="Portada del proyecto vinilos" loading="lazy" />
+          <figcaption class="mono">— Portada del proyecto</figcaption>
+        </figure>
+      </article>
+
+      <!-- 06 · Curitas -->
+      <article class="case reveal" id="caso-curitas">
+        <header class="case__head">
+          <div>
+            <span class="case__num">№ 06 · Análisis</span>
+            <h3 class="case__title">Curitas.</h3>
+          </div>
+          <p class="case__meta mono">Análisis de packaging<br/>2024</p>
+        </header>
+
+        <div class="case__lead case__lead--right">
+          <p>Estudio de marca y packaging para la empresa Curitas. Una mirada estructurada sobre cómo se comunica un producto cotidiano: público, lectura, jerarquía, materialidad.</p>
+        </div>
+
+        <figure class="media media--wide reveal">
+          <img src="assets/proyectos/curitas/portada.jpg" alt="Análisis de packaging Curitas" loading="lazy" />
+          <figcaption class="mono">— Documento de análisis</figcaption>
+        </figure>
+      </article>
+
+      <!-- 07 · Infografías -->
+      <article class="case reveal" id="caso-infografias">
+        <header class="case__head">
+          <div>
+            <span class="case__num">№ 07 · Comunicación visual</span>
+            <h3 class="case__title">Infografías.</h3>
+          </div>
+          <p class="case__meta mono">Diseño de información<br/>2024</p>
+        </header>
+
+        <div class="case__lead">
+          <p>Serie de infografías donde la información se vuelve composición. Datos, jerarquía y narración traducidos a una lectura clara y visualmente respirada.</p>
+        </div>
+
+        <div class="case__split">
+          <figure class="media media--portrait reveal">
+            <img src="assets/proyectos/infografias/info1.jpg" alt="Infografía 1" loading="lazy" />
+            <figcaption class="mono">— Pieza 01</figcaption>
+          </figure>
+          <figure class="media media--portrait reveal">
+            <img src="assets/proyectos/infografias/info2.jpg" alt="Infografía 2" loading="lazy" />
+            <figcaption class="mono">— Pieza 02</figcaption>
+          </figure>
+        </div>
+      </article>
+
+      <!-- 08 · Éveil -->
+      <article class="case reveal" id="caso-eveil">
+        <header class="case__head">
+          <div>
+            <span class="case__num">№ 08 · Audiovisual</span>
+            <h3 class="case__title">Éveil — Productora Or.</h3>
+          </div>
+          <p class="case__meta mono">Producción cinematográfica<br/>2024</p>
+        </header>
+
+        <div class="case__lead case__lead--right">
+          <p>Pieza audiovisual de identidad para una productora cinematográfica. Diseño en movimiento: dirección, ritmo y atmósfera traducidos a imagen en tiempo.</p>
+        </div>
+
+        <div class="video-embed reveal">
+          <iframe src="https://player.vimeo.com/video/1191173552?title=0&byline=0&portrait=0"
+                  title="Éveil · Productora Or."
+                  frameborder="0"
+                  allow="autoplay; fullscreen; picture-in-picture"
+                  allowfullscreen></iframe>
+          <p class="video-embed__hint mono">— Video · Éveil para Productora Or. <a href="https://vimeo.com/1191173552" target="_blank" rel="noopener">Ver en Vimeo ↗</a></p>
+        </div>
+      </article>
+
+      <p class="case__index mono reveal">— Más proyectos disponibles a pedido. <a href="#contacto">Escribir.</a></p>
+    </section>
+
+    <!-- 04 PROCESO / MATERIALIDAD -->
+    <section id="proceso" class="section proceso" data-folio="04">
+      <div class="folio mono"><span>04</span><span class="folio__rule"></span><span>Proceso</span></div>
+
+      <header class="section__head section__head--right">
+        <p class="section__kicker mono">Capítulo · 04 — Proceso</p>
+        <h2 class="section__title">Materialidad<br/><em>aplicada.</em></h2>
+        <p class="section__sub">Una bitácora abierta de pruebas, papeles, tintas, texturas y fragmentos.</p>
+      </header>
+
+      <div class="proceso__grid">
+        <figure class="ph ph--paper reveal" style="--accent: var(--cream-deep);">
+          <span class="ph__label mono">Papel · Calandrado 120g</span>
+        </figure>
+        <figure class="ph ph--paper reveal" style="--accent: var(--cream-shade);">
+          <span class="ph__label mono">Papel · Reciclado 300g</span>
+        </figure>
+        <figure class="ph ph--paper reveal" style="--accent: var(--orange-soft);">
+          <span class="ph__label mono">Tinta · Naranja claro</span>
+        </figure>
+        <figure class="ph ph--paper reveal" style="--accent: var(--orange);">
+          <span class="ph__label mono">Tinta · Naranja 173C</span>
+        </figure>
+        <figure class="ph ph--paper reveal" style="--accent: #efe0a8;">
+          <span class="ph__label mono">Calco · 60g</span>
+        </figure>
+        <figure class="ph ph--paper reveal" style="--accent: var(--orange-deep);">
+          <span class="ph__label mono">Tinta · Naranja profundo</span>
+        </figure>
+      </div>
+
+      <div class="proceso__notes">
+        <p class="mono reveal">— Pruebas de impresión, archivos físicos, anotaciones, sobrantes.</p>
+        <p class="proceso__quote reveal">La materialidad no decora.<br/>Organiza la lectura.</p>
+      </div>
+    </section>
+
+    <!-- 05 CONTACTO -->
+    <section id="contacto" class="section contacto" data-folio="05">
+      <div class="folio mono"><span>05</span><span class="folio__rule"></span><span>Contacto</span></div>
+
+      <div class="contacto__inner">
+        <p class="section__kicker mono reveal">Capítulo · 05 — Contacto</p>
+        <h2 class="contacto__title reveal">Conversemos<br/>sobre lo que queda.</h2>
+
+        <a href="mailto:catalinadevasconcellos@gmail.com" class="contacto__mail reveal">catalinadevasconcellos@gmail.com</a>
+
+        <ul class="contacto__list mono">
+          <li class="reveal"><span>Teléfono</span> <a href="tel:+5491121593669">+54 9 11 2159 3669</a></li>
+          <li class="reveal"><span>Instagram</span> <a href="https://instagram.com/portafolio_de_vasconcellos_" target="_blank" rel="noopener">@portafolio_de_vasconcellos_</a></li>
+          <li class="reveal"><span>Behance</span> <a href="https://behance.net/catadevasc" target="_blank" rel="noopener">behance.net/catadevasc</a></li>
+          <li class="reveal"><span>LinkedIn</span> <a href="https://linkedin.com/in/catalina-de-vasconcellos/" target="_blank" rel="noopener">/in/catalina-de-vasconcellos</a></li>
+          <li class="reveal"><span>Ubicación</span> <span>Buenos Aires, Argentina</span></li>
+        </ul>
+
+        <p class="contacto__quiet mono reveal">— Disponible para colaboraciones a largo plazo.</p>
+      </div>
+
+      <footer class="colofon mono">
+        <div>
+          <p>© CDV · 2026</p>
+          <p>Catalina de Vasconcellos Marinsalda</p>
+        </div>
+        <div class="colofon__right">
+          <p>Buenos Aires · Argentina</p>
+          <p>Edición digital</p>
+        </div>
+      </footer>
+    </section>
+  </main>
+
+  <script src="js/main.js" defer></script>
+</body>
+</html>

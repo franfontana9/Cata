@@ -1,0 +1,18 @@
+# macOS
+.DS_Store
+.AppleDouble
+.LSOverride
+
+# Editor
+.vscode/
+.idea/
+*.swp
+
+# Notas internas y skills toolkit (no son parte del sitio)
+memoria/
+Skills/
+Contenido/
+
+# Logs
+*.log
+npm-debug.log*
