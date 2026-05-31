@@ -356,19 +356,40 @@
         <p class="section__sub">Un muestrario abierto. Elegí una superficie y sentí cómo cambia el contacto.</p>
       </header>
 
+      <p class="materia__intro mono reveal">imaginá una superficie — su materia, su textura, su huella. y ahora, hacela.</p>
+
+      <!-- Configurador por capas (inspirado en la interacción "imaginate una piscina... y ahora hazla").
+           El usuario compone una muestra eligiendo materia + textura + tinta; las capas se superponen
+           en vivo sobre la previsualización. Los grupos de opciones se generan en JS. -->
       <div class="materia__lab">
-        <!-- Muestra grande que cambia según selección -->
+        <!-- Previsualización compuesta -->
         <figure class="materia__stage" data-cursor>
-          <div class="materia__surface" id="materiaSurface"></div>
+          <div class="materia__build" id="materiaBuild">
+            <span class="materia__layer materia__layer--base" id="layerBase" aria-hidden="true"></span>
+            <span class="materia__layer materia__layer--tex"  id="layerTex"  aria-hidden="true"></span>
+            <span class="materia__layer materia__layer--tint" id="layerTint" aria-hidden="true"></span>
+          </div>
           <figcaption class="materia__caption">
-            <span class="materia__caption-name mono" id="materiaName">papel reciclado</span>
-            <span class="materia__caption-line" id="materiaLine">cada soporte deja una marca distinta.</span>
+            <span class="materia__caption-name mono" id="materiaName">papel reciclado · relieve · tinta natural</span>
+            <span class="materia__caption-line mono" id="materiaLine">cada elección deja una marca distinta.</span>
           </figcaption>
         </figure>
 
-        <!-- Selector de muestras -->
-        <div class="materia__picker mono" id="materiaPicker" role="listbox" aria-label="Elegir materialidad">
-          <!-- Los items se generan en JS desde la lista MUESTRAS -->
+        <!-- Pasos -->
+        <div class="materia__steps mono">
+          <fieldset class="materia__step">
+            <legend><span class="materia__step-num">01</span> la materia</legend>
+            <div class="materia__opts" data-group="base" aria-label="Elegir materia"></div>
+          </fieldset>
+          <fieldset class="materia__step">
+            <legend><span class="materia__step-num">02</span> su textura</legend>
+            <div class="materia__opts" data-group="tex" aria-label="Elegir textura"></div>
+          </fieldset>
+          <fieldset class="materia__step">
+            <legend><span class="materia__step-num">03</span> su huella · tinta</legend>
+            <div class="materia__opts" data-group="tint" aria-label="Elegir tinta"></div>
+          </fieldset>
+          <button class="materia__make" id="materiaMake" type="button" data-cursor>y ahora, hacela →</button>
         </div>
       </div>
 

@@ -109,58 +109,117 @@
     document.addEventListener('mouseenter', () => { cursor.style.opacity = '1'; });
   }
 
-  /* ---------- 7 · Módulo interactivo de Materialidades ---------- */
-  // Cada muestra: archivo en assets/materialidades/muestras/ + nombre + frase conceptual.
-  // REEMPLAZAR imágenes en esa carpeta para cambiar el muestrario.
-  const MUESTRAS = [
-    { id: 'reciclado',    name: 'papel reciclado',        img: 'assets/materialidades/muestras/reciclado.jpg',    line: 'sustentabilidad es pensar en lo que permanece.' },
-    { id: 'hecho',        name: 'papel hecho a mano',     img: 'assets/materialidades/muestras/hecho-a-mano.jpg', line: 'cada soporte deja una marca distinta.' },
-    { id: 'calco',        name: 'hoja calco · transparencia', img: 'assets/materialidades/muestras/calco.jpg',   line: 'la luz atraviesa y deja capa sobre capa.' },
-    { id: 'fibra',        name: 'fibra natural',          img: 'assets/materialidades/muestras/fibra.jpg',        line: 'lo que se toca, se percibe y deja huella.' },
-    { id: 'vegetal',      name: 'textura vegetal',        img: 'assets/materialidades/muestras/vegetal.jpg',      line: 'la naturaleza también es estructura.' },
-    { id: 'huella',       name: 'rastro · huella',        img: 'assets/materialidades/muestras/huella.jpg',       line: 'la materia guarda el gesto que la tocó.' },
-    { id: 'relieve',      name: 'relieve · impresión',    img: 'assets/materialidades/muestras/relieve.jpg',      line: 'la textura hace visible el contacto.' },
-    { id: 'trama',        name: 'trama · grilla',         img: 'assets/materialidades/muestras/trama.jpg',        line: 'el orden es una forma de cuidado.' }
+  /* ---------- 7 · Materialidades: configurador por capas ----------
+     Inspirado en la interacción "imaginate una piscina... y ahora hazla":
+     el usuario compone una muestra eligiendo materia + textura + tinta,
+     las capas se superponen en vivo y "hacela" cierra la composición.
+     REEMPLAZAR imágenes en assets/materialidades/muestras/ para cambiar el muestrario. */
+  const M_BASE = [
+    { id: 'reciclado', name: 'papel reciclado',    img: 'assets/materialidades/muestras/reciclado.jpg' },
+    { id: 'hecho',     name: 'hecho a mano',       img: 'assets/materialidades/muestras/hecho-a-mano.jpg' },
+    { id: 'fibra',     name: 'fibra natural',      img: 'assets/materialidades/muestras/fibra.jpg' },
+    { id: 'calco',     name: 'hoja calco',         img: 'assets/materialidades/muestras/calco.jpg' }
   ];
+  const M_TEX = [
+    { id: 'relieve',   name: 'relieve',            img: 'assets/materialidades/muestras/relieve.jpg' },
+    { id: 'vegetal',   name: 'vegetal',            img: 'assets/materialidades/muestras/vegetal.jpg' },
+    { id: 'trama',     name: 'trama · grilla',     img: 'assets/materialidades/muestras/trama.jpg' },
+    { id: 'huella',    name: 'huella',             img: 'assets/materialidades/muestras/huella.jpg' },
+    { id: 'lisa',      name: 'sin textura',        img: '' }
+  ];
+  const M_TINT = [
+    { id: 'natural',   name: 'natural',            color: '' },
+    { id: 'naranja',   name: 'naranja',            color: '#eb5a35' },
+    { id: 'verde',     name: 'verde',              color: '#17391f' },
+    { id: 'crema',     name: 'crema',              color: '#f4e9cd' }
+  ];
+  const GROUPS = { base: M_BASE, tex: M_TEX, tint: M_TINT };
 
-  const picker  = document.getElementById('materiaPicker');
-  const surface = document.getElementById('materiaSurface');
+  // Frases que cierran al "hacer" la muestra (rotan según textura elegida)
+  const M_LINES = {
+    relieve: 'la textura hace visible el contacto.',
+    vegetal: 'la naturaleza también es estructura.',
+    trama:   'el orden es una forma de cuidado.',
+    huella:  'lo que se toca, se percibe y deja huella.',
+    lisa:    'sustentabilidad es pensar en lo que permanece.'
+  };
+
+  const build   = document.getElementById('materiaBuild');
+  const layerB  = document.getElementById('layerBase');
+  const layerT  = document.getElementById('layerTex');
+  const layerTi = document.getElementById('layerTint');
   const nameEl  = document.getElementById('materiaName');
   const lineEl  = document.getElementById('materiaLine');
+  const makeBtn = document.getElementById('materiaMake');
 
-  if (picker && surface) {
-    // Render del selector
-    picker.innerHTML = MUESTRAS.map((m, i) => `
-      <button class="materia__item" type="button" role="option" data-mat="${m.id}" aria-selected="false">
-        <span class="materia__swatch" style="background-image:url('${m.img}')"></span>
-        <span class="materia__num">${String(i + 1).padStart(2, '0')}</span>
-        <span>${m.name}</span>
-      </button>`).join('');
+  if (build && layerB) {
+    const sel = { base: M_BASE[0], tex: M_TEX[0], tint: M_TINT[0] };
 
-    const items = picker.querySelectorAll('.materia__item');
+    // Render de cada grupo de opciones
+    document.querySelectorAll('.materia__opts').forEach(group => {
+      const key = group.dataset.group;
+      group.innerHTML = GROUPS[key].map(o => {
+        const sw = o.img ? `background-image:url('${o.img}')`
+                         : (o.color ? `background-color:${o.color}` : '');
+        const empty = (!o.img && !o.color) ? ' materia__opt-sw--empty' : '';
+        return `<button class="materia__opt" type="button" data-id="${o.id}" title="${o.name}" aria-pressed="false" data-cursor>
+                  <span class="materia__opt-sw${empty}" style="${sw}"></span>
+                  <span class="materia__opt-name">${o.name}</span>
+                </button>`;
+      }).join('');
+    });
 
-    function select(id) {
-      const m = MUESTRAS.find(x => x.id === id);
-      if (!m) return;
-      // transición suave de la superficie
-      surface.style.opacity = '0';
-      surface.style.filter = 'blur(4px)';
-      setTimeout(() => {
-        surface.style.backgroundImage = `url('${m.img}')`;
-        surface.style.opacity = '1';
-        surface.style.filter = 'none';
-      }, reduceMotion ? 0 : 220);
-      nameEl.textContent = m.name;
-      lineEl.textContent = m.line;
-      items.forEach(b => {
-        const on = b.dataset.mat === id;
-        b.classList.toggle('is-selected', on);
-        b.setAttribute('aria-selected', String(on));
-      });
+    function paint() {
+      // base
+      layerB.style.backgroundImage = sel.base.img ? `url('${sel.base.img}')` : 'none';
+      // textura (multiply encima)
+      layerT.style.backgroundImage = sel.tex.img ? `url('${sel.tex.img}')` : 'none';
+      layerT.style.opacity = sel.tex.img ? '0.5' : '0';
+      // tinta (color con blend)
+      layerTi.style.backgroundColor = sel.tint.color || 'transparent';
+      layerTi.style.opacity = sel.tint.color ? '0.32' : '0';
+      // caption
+      nameEl.textContent = `${sel.base.name} · ${sel.tex.name} · tinta ${sel.tint.name}`;
     }
 
-    items.forEach(b => b.addEventListener('click', () => select(b.dataset.mat)));
-    select(MUESTRAS[0].id); // muestra inicial
+    function choose(key, id) {
+      const opt = GROUPS[key].find(o => o.id === id);
+      if (!opt) return;
+      sel[key] = opt;
+      // marcar activo dentro del grupo
+      document.querySelector(`.materia__opts[data-group="${key}"]`)
+        .querySelectorAll('.materia__opt').forEach(b => {
+          const on = b.dataset.id === id;
+          b.classList.toggle('is-on', on);
+          b.setAttribute('aria-pressed', String(on));
+        });
+      paint();
+    }
+
+    document.querySelectorAll('.materia__opts').forEach(group => {
+      const key = group.dataset.group;
+      group.addEventListener('click', e => {
+        const btn = e.target.closest('.materia__opt');
+        if (btn) choose(key, btn.dataset.id);
+      });
+    });
+
+    // "y ahora, hacela" → gesto de cierre: pulso + frase conceptual
+    makeBtn.addEventListener('click', () => {
+      if (!reduceMotion) {
+        build.classList.remove('is-made');
+        void build.offsetWidth;        // reinicia la animación
+        build.classList.add('is-made');
+      }
+      lineEl.textContent = M_LINES[sel.tex.id] || 'la materia también comunica.';
+      makeBtn.textContent = 'hecha. ✦ otra vez →';
+      setTimeout(() => { makeBtn.textContent = 'y ahora, hacela →'; }, 2600);
+    });
+
+    // Estado inicial: marcar la primera opción de cada grupo y pintar
+    choose('base', sel.base.id);
+    choose('tex',  sel.tex.id);
+    choose('tint', sel.tint.id);
   }
 
 })();
