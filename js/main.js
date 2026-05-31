@@ -222,22 +222,19 @@
     choose('tint', sel.tint.id);
   }
 
-  /* ---------- 8 · La Pingüino: escalera flotante (entrada al scroll) ---------- */
-  const stage = document.querySelector('[data-pinguino]');
-  if (stage) {
-    if (reduceMotion) {
-      stage.classList.add('is-in');
-    } else {
-      const stageIo = new IntersectionObserver((entries) => {
-        entries.forEach(entry => {
-          if (entry.isIntersecting) {
-            stage.classList.add('is-in');   // dispara la subida escalonada + flotación
-            stageIo.unobserve(stage);
-          }
-        });
-      }, { rootMargin: '0px 0px -12% 0px', threshold: 0.2 });
-      stageIo.observe(stage);
-    }
-  }
+  /* ---------- 8 · Escenarios que entran al scroll (Pingüino escalera + Casa tomada collage) ---------- */
+  const stages = document.querySelectorAll('[data-stage], [data-pinguino]');
+  stages.forEach(stage => {
+    if (reduceMotion) { stage.classList.add('is-in'); return; }
+    const io = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          stage.classList.add('is-in');   // dispara entrada escalonada + flotación
+          io.unobserve(stage);
+        }
+      });
+    }, { rootMargin: '0px 0px -12% 0px', threshold: 0.2 });
+    io.observe(stage);
+  });
 
 })();

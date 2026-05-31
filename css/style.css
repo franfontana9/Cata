@@ -414,6 +414,45 @@ body.has-cursor [data-cursor]{ cursor:none; }
 .flipbook{ position:relative; width:100%; aspect-ratio:16/10; margin-top:26px; background:var(--cream-deep); overflow:hidden; border:1px solid var(--hair); }
 .flipbook iframe{ position:absolute; inset:0; width:100%; height:100%; border:0; }
 
+/* Collage de cuadrados flotantes dispersos (Casa tomada) */
+.case__btn{
+  display:inline-block; margin-top:20px;
+  padding:13px 26px;
+  border:1px solid var(--orange); color:var(--orange);
+  font-size:0.74rem; letter-spacing:0.04em; text-transform:lowercase;
+  transition:background .35s var(--ease), color .35s var(--ease);
+}
+.case__btn:hover{ background:var(--orange); color:var(--cream); }
+
+.collage-stage{
+  position:relative; width:100%;
+  height:clamp(460px, 72vh, 760px);
+  margin-top:clamp(28px,5vh,52px);
+}
+.collage-card{
+  position:absolute; display:block;
+  width:clamp(180px, 25vw, 330px);
+  opacity:0; transform:translateY(60px) rotate(var(--rot,0deg));
+  transition:opacity .9s var(--ease), transform 1.1s var(--ease);
+  transition-delay:var(--d, 0s);
+}
+.collage-card img{
+  width:100%; aspect-ratio:1/1; object-fit:cover; display:block;
+  box-shadow:0 28px 50px -26px rgba(23,57,31,0.5), 0 10px 20px -14px rgba(23,57,31,0.32);
+  transition:transform .5s var(--ease);
+}
+.collage-card:hover img{ transform:scale(1.03); }
+.collage-stage.is-in .collage-card{ opacity:1; transform:translateY(0) rotate(var(--rot,0deg)); }
+.collage-stage.is-in .collage-card img{ animation:pinguinoFloat 8s ease-in-out infinite; animation-delay:calc(var(--d,0s) + 1.2s); }
+@media (max-width:720px){
+  .collage-stage{ height:clamp(420px, 66vh, 620px); }
+  .collage-card{ width:clamp(130px, 40vw, 200px); }
+}
+@media (prefers-reduced-motion: reduce){
+  .collage-card{ opacity:1; transform:rotate(var(--rot,0deg)); transition:none; }
+  .collage-stage.is-in .collage-card img{ animation:none; }
+}
+
 .proyectos__foot{ margin-top:clamp(50px,8vh,90px); font-size:0.78rem; color:var(--green-soft); }
 .proyectos__foot a{ color:var(--orange); }
 
