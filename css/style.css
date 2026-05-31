@@ -291,49 +291,57 @@ body.has-cursor [data-cursor]{ cursor:none; }
    ============================================================ */
 /* Proyecto destacado */
 .feature{
-  display:grid; grid-template-columns:1.5fr 1fr; gap:clamp(24px,4vw,60px);
-  align-items:center;
+  display:flex; flex-direction:column; gap:clamp(20px,3vh,40px);
   padding-bottom:clamp(50px,8vh,90px);
   margin-bottom:clamp(50px,8vh,90px);
   border-bottom:1px solid var(--hair);
 }
-.feature__media{ position:relative; display:block; overflow:hidden; }
-.feature__media img{ width:100%; transition:transform 1.4s var(--ease); }
-.feature__media:hover img{ transform:scale(1.03); }
-/* Botón overlay sobre la imagen — aparece al hover (siempre visible en touch) */
-.feature__open{
-  position:absolute; left:50%; bottom:22px; transform:translate(-50%,8px);
-  display:inline-block;
-  padding:11px 20px;
-  background:var(--orange); color:var(--cream);
-  font-size:0.72rem; letter-spacing:0.04em;
-  opacity:0; transition:opacity .4s var(--ease), transform .4s var(--ease);
+.feature__info{ max-width:60ch; }
+
+/* Escenario en escalera: las 3 imágenes completas, flotando */
+.feature__stage{
+  position:relative; width:100%;
+  height:clamp(460px, 80vh, 880px);
 }
-.feature__media:hover .feature__open{ opacity:1; transform:translate(-50%,0); }
-/* en el carrusel va arriba para no chocar con los dots */
-.carousel .feature__open{ bottom:auto; top:18px; }
-/* Carrusel (La Pingüino) */
-.carousel{ position:relative; overflow:hidden; background:var(--cream-deep); }
-.carousel__track{ display:flex; transition:transform .6s var(--ease); }
-.carousel.is-dragging .carousel__track{ transition:none; }
-.carousel__slide{ flex:0 0 100%; display:block; }
-.carousel__slide img{ width:100%; height:auto; display:block; pointer-events:none; }
-/* flechas */
-.carousel__arrow{
-  position:absolute; top:50%; transform:translateY(-50%); z-index:3;
-  width:42px; height:42px; display:flex; align-items:center; justify-content:center;
-  background:rgba(244,233,205,0.85); color:var(--green); border:1px solid var(--hair);
-  font-size:1rem; line-height:1; transition:background .3s var(--ease), color .3s var(--ease);
+.pinguino-slide{
+  position:absolute; height:66%; margin:0;
+  /* entrada de abajo hacia arriba, escalonada */
+  opacity:0; transform:translateY(80px);
+  transition:opacity 1s var(--ease), transform 1.2s var(--ease);
+  transition-delay:calc(var(--i) * 0.18s);
 }
-.carousel__arrow:hover{ background:var(--orange); color:var(--cream); border-color:var(--orange); }
-.carousel__arrow--prev{ left:14px; } .carousel__arrow--next{ right:14px; }
-/* dots */
-.carousel__dots{ position:absolute; left:0; right:0; bottom:14px; z-index:3; display:flex; gap:8px; justify-content:center; }
-.carousel__dots button{
-  width:8px; height:8px; padding:0; border:1px solid var(--green); background:transparent;
-  transition:background .3s var(--ease);
+.pinguino-slide a{ display:block; height:100%; }
+.pinguino-slide img{
+  height:100%; width:auto; display:block;
+  box-shadow:0 40px 70px -30px rgba(23,57,31,0.5), 0 14px 26px -16px rgba(23,57,31,0.35);
 }
-.carousel__dots button.is-on{ background:var(--orange); border-color:var(--orange); }
+/* posiciones en escalera ascendente (izq-abajo → der-arriba) */
+.pinguino-slide:nth-child(1){ left:2%;  bottom:0;   z-index:1; }
+.pinguino-slide:nth-child(2){ left:34%; bottom:16%; z-index:2; }
+.pinguino-slide:nth-child(3){ left:64%; bottom:32%; z-index:3; }
+/* al entrar en viewport: suben a su lugar */
+.feature__stage.is-in .pinguino-slide{ opacity:1; transform:translateY(0); }
+/* flotación suave una vez posicionadas (en <a> para no pisar el transform de entrada) */
+.feature__stage.is-in .pinguino-slide a{
+  animation:pinguinoFloat 6s ease-in-out infinite;
+  animation-delay:calc(var(--i) * 0.7s + 1.2s);
+}
+.pinguino-slide:nth-child(2) a{ animation-duration:7.2s; }
+.pinguino-slide:nth-child(3) a{ animation-duration:6.6s; }
+@keyframes pinguinoFloat{ 0%,100%{ transform:translateY(0); } 50%{ transform:translateY(-14px); } }
+/* mobile: escalera más compacta para que entren las 3 */
+@media (max-width:720px){
+  .feature__stage{ height:clamp(420px, 72vh, 640px); }
+  .pinguino-slide{ height:50%; }
+  .pinguino-slide:nth-child(1){ left:0;   bottom:0;   }
+  .pinguino-slide:nth-child(2){ left:25%; bottom:18%; }
+  .pinguino-slide:nth-child(3){ left:50%; bottom:36%; }
+}
+/* reduce-motion: sin entrada ni flotación, imágenes visibles */
+@media (prefers-reduced-motion: reduce){
+  .pinguino-slide{ opacity:1; transform:none; transition:none; }
+  .feature__stage.is-in .pinguino-slide a{ animation:none; }
+}
 
 /* Botón de texto bajo la descripción */
 .feature__btn{

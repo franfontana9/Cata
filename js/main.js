@@ -222,65 +222,22 @@
     choose('tint', sel.tint.id);
   }
 
-  /* ---------- 8 · Carrusel (La Pingüino) ---------- */
-  document.querySelectorAll('[data-carousel]').forEach(car => {
-    const track  = car.querySelector('.carousel__track');
-    const slides = Array.from(car.querySelectorAll('.carousel__slide'));
-    const prev   = car.querySelector('.carousel__arrow--prev');
-    const next   = car.querySelector('.carousel__arrow--next');
-    const dotsEl = car.querySelector('.carousel__dots');
-    if (!track || slides.length === 0) return;
-
-    let index = 0;
-    const last = slides.length - 1;
-
-    // dots
-    dotsEl.innerHTML = slides.map((_, i) =>
-      `<button type="button" data-i="${i}" aria-label="Ir a la imagen ${i + 1}"></button>`).join('');
-    const dots = Array.from(dotsEl.querySelectorAll('button'));
-
-    function go(i, animate = true) {
-      index = Math.max(0, Math.min(last, i));
-      track.style.transition = animate && !reduceMotion ? '' : 'none';
-      track.style.transform = `translateX(${-index * 100}%)`;
-      dots.forEach((d, di) => d.classList.toggle('is-on', di === index));
+  /* ---------- 8 · La Pingüino: escalera flotante (entrada al scroll) ---------- */
+  const stage = document.querySelector('[data-pinguino]');
+  if (stage) {
+    if (reduceMotion) {
+      stage.classList.add('is-in');
+    } else {
+      const stageIo = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting) {
+            stage.classList.add('is-in');   // dispara la subida escalonada + flotación
+            stageIo.unobserve(stage);
+          }
+        });
+      }, { rootMargin: '0px 0px -12% 0px', threshold: 0.2 });
+      stageIo.observe(stage);
     }
-    go(0, false);
-
-    prev.addEventListener('click', () => go(index === 0 ? last : index - 1));
-    next.addEventListener('click', () => go(index === last ? 0 : index + 1));
-    dots.forEach(d => d.addEventListener('click', () => go(+d.dataset.i)));
-
-    // Swipe / drag con pointer events (mouse + touch)
-    let startX = 0, dx = 0, dragging = false;
-    const onDown = (e) => {
-      dragging = true; startX = e.clientX; dx = 0;
-      car.classList.add('is-dragging');
-      track.setPointerCapture?.(e.pointerId);
-    };
-    const onMove = (e) => {
-      if (!dragging) return;
-      dx = e.clientX - startX;
-      const pct = (dx / car.offsetWidth) * 100;
-      track.style.transform = `translateX(${-index * 100 + pct}%)`;
-    };
-    const onUp = () => {
-      if (!dragging) return;
-      dragging = false;
-      car.classList.remove('is-dragging');
-      const threshold = car.offsetWidth * 0.15;
-      if (dx > threshold && index > 0) go(index - 1);
-      else if (dx < -threshold && index < last) go(index + 1);
-      else go(index);
-    };
-    track.addEventListener('pointerdown', onDown);
-    track.addEventListener('pointermove', onMove);
-    track.addEventListener('pointerup', onUp);
-    track.addEventListener('pointercancel', onUp);
-    // si hubo arrastre real, cancelar el click del enlace (no abrir el PDF)
-    slides.forEach(s => s.addEventListener('click', (e) => {
-      if (Math.abs(dx) > 6) e.preventDefault();
-    }));
-  });
+  }
 
 })();

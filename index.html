@@ -157,27 +157,8 @@
       </header>
 
       <!-- ◆ 01 · LA PINGÜINO — proyecto principal (destacado) -->
-      <article class="feature reveal" id="caso-pinguino">
-        <!-- Carrusel de La Pingüino. REEMPLAZAR imágenes en assets/proyectos/pinguino/.
-             Cada slide abre el proyecto completo (PDF, 84 páginas). -->
-        <div class="carousel feature__media" data-carousel>
-          <div class="carousel__track">
-            <a class="carousel__slide" href="assets/proyectos/pinguino/la-pinguino-proyecto.pdf" target="_blank" rel="noopener" data-cursor aria-label="Ver el proyecto completo de La Pingüino (PDF)">
-              <img src="assets/proyectos/pinguino/reencuentro.png" alt="La Pingüino · sección Reencuentro" loading="lazy" />
-            </a>
-            <a class="carousel__slide" href="assets/proyectos/pinguino/la-pinguino-proyecto.pdf" target="_blank" rel="noopener" data-cursor aria-label="Ver el proyecto completo de La Pingüino (PDF)">
-              <img src="assets/proyectos/pinguino/compartir.png" alt="La Pingüino · sección Compartir" loading="lazy" />
-            </a>
-            <a class="carousel__slide" href="assets/proyectos/pinguino/la-pinguino-proyecto.pdf" target="_blank" rel="noopener" data-cursor aria-label="Ver el proyecto completo de La Pingüino (PDF)">
-              <img src="assets/proyectos/pinguino/memorias.png" alt="La Pingüino · sección Memorias" loading="lazy" />
-            </a>
-          </div>
-          <button class="carousel__arrow carousel__arrow--prev" type="button" data-cursor aria-label="Anterior">←</button>
-          <button class="carousel__arrow carousel__arrow--next" type="button" data-cursor aria-label="Siguiente">→</button>
-          <div class="carousel__dots" aria-hidden="true"></div>
-          <span class="feature__open mono">ver proyecto completo ↗</span>
-        </div>
-        <div class="feature__info">
+      <article class="feature" id="caso-pinguino">
+        <div class="feature__info reveal">
           <span class="feature__num mono">№ 01 · Proyecto principal</span>
           <h3 class="feature__title">La Pingüino.</h3>
           <p class="feature__cat mono">Identidad de marca · Sistema visual · Packaging</p>
@@ -188,6 +169,26 @@
           </p>
           <a class="feature__btn mono" href="assets/proyectos/pinguino/la-pinguino-proyecto.pdf"
              target="_blank" rel="noopener" data-cursor>ver proyecto completo ↗</a>
+        </div>
+
+        <!-- Escenario: las 3 imágenes flotan en escalera y entran de abajo hacia arriba al hacer scroll.
+             REEMPLAZAR imágenes en assets/proyectos/pinguino/. Cada una abre el PDF completo (84pp). -->
+        <div class="feature__stage" data-pinguino>
+          <figure class="pinguino-slide" style="--i:0">
+            <a href="assets/proyectos/pinguino/la-pinguino-proyecto.pdf" target="_blank" rel="noopener" data-cursor aria-label="La Pingüino · Reencuentro — ver proyecto completo (PDF)">
+              <img src="assets/proyectos/pinguino/reencuentro.png" alt="La Pingüino · sección Reencuentro" loading="lazy" />
+            </a>
+          </figure>
+          <figure class="pinguino-slide" style="--i:1">
+            <a href="assets/proyectos/pinguino/la-pinguino-proyecto.pdf" target="_blank" rel="noopener" data-cursor aria-label="La Pingüino · Compartir — ver proyecto completo (PDF)">
+              <img src="assets/proyectos/pinguino/compartir.png" alt="La Pingüino · sección Compartir" loading="lazy" />
+            </a>
+          </figure>
+          <figure class="pinguino-slide" style="--i:2">
+            <a href="assets/proyectos/pinguino/la-pinguino-proyecto.pdf" target="_blank" rel="noopener" data-cursor aria-label="La Pingüino · Memorias — ver proyecto completo (PDF)">
+              <img src="assets/proyectos/pinguino/memorias.png" alt="La Pingüino · sección Memorias" loading="lazy" />
+            </a>
+          </figure>
         </div>
       </article>
 
