@@ -447,6 +447,8 @@ body.has-cursor [data-cursor]{ cursor:none; }
 .collage-stage--three .collage-card{ width:clamp(140px, 17vw, 230px); }
 /* el pin es apaisado: encuadrar al frente (corazón de ramas) */
 .collage-card--pin img{ object-position:18% center; }
+/* par de imágenes más juntas (Rolling Stones): escenario más bajo */
+.collage-stage--pair{ height:clamp(380px, 56vh, 600px); }
 .collage-stage.is-in .collage-card{ opacity:1; transform:translateY(0) rotate(var(--rot,0deg)); }
 .collage-stage.is-in .collage-card img{ animation:pinguinoFloat 8s ease-in-out infinite; animation-delay:calc(var(--d,0s) + 1.2s); }
 @media (max-width:720px){
