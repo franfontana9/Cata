@@ -449,6 +449,9 @@ body.has-cursor [data-cursor]{ cursor:none; }
 .collage-card--pin img{ object-position:18% center; }
 /* par de imágenes más juntas (Rolling Stones): escenario más bajo */
 .collage-stage--pair{ height:clamp(380px, 56vh, 600px); }
+/* escalera de dos tapas (Vinilos): dos cuadrados chicos en diagonal */
+.collage-stage--stair{ height:clamp(360px, 52vh, 560px); }
+.collage-stage--stair .collage-card{ width:clamp(150px, 19vw, 250px); }
 .collage-stage.is-in .collage-card{ opacity:1; transform:translateY(0) rotate(var(--rot,0deg)); }
 .collage-stage.is-in .collage-card img{ animation:pinguinoFloat 8s ease-in-out infinite; animation-delay:calc(var(--d,0s) + 1.2s); }
 @media (max-width:720px){
