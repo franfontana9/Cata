@@ -452,6 +452,9 @@ body.has-cursor [data-cursor]{ cursor:none; }
 /* escalera de dos tapas (Vinilos): dos cuadrados chicos en diagonal */
 .collage-stage--stair{ height:clamp(360px, 52vh, 560px); }
 .collage-stage--stair .collage-card{ width:clamp(150px, 19vw, 250px); }
+/* cuadrado flotante único, centrado (Curitas): primera vista en columna media */
+.collage-stage--solo{ height:auto; display:flex; justify-content:center; margin-top:clamp(18px,3vh,32px); }
+.collage-stage--solo .collage-card{ position:relative; width:clamp(220px, 80%, 360px); }
 .collage-stage.is-in .collage-card{ opacity:1; transform:translateY(0) rotate(var(--rot,0deg)); }
 .collage-stage.is-in .collage-card img{ animation:pinguinoFloat 8s ease-in-out infinite; animation-delay:calc(var(--d,0s) + 1.2s); }
 @media (max-width:720px){
