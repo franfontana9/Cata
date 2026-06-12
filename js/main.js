@@ -222,7 +222,59 @@
     choose('tint', sel.tint.id);
   }
 
-  /* ---------- 8 · Escenarios que entran al scroll (Pingüino escalera + Casa tomada collage) ---------- */
+  /* ---------- 8 · Panel de video (La Pingüino) ---------- */
+  document.querySelectorAll('[data-video-open]').forEach(btn => {
+    btn.addEventListener('click', () => {
+      const panel = document.getElementById(`vpanel-${btn.dataset.videoOpen}`);
+      if (!panel) return;
+      panel.hidden = false;
+      panel.scrollIntoView({ behavior: reduceMotion ? 'auto' : 'smooth', block: 'start' });
+      btn.textContent = '↑ cerrar';
+      btn.dataset.videoClose = btn.dataset.videoOpen;
+      delete btn.dataset.videoOpen;
+    });
+  });
+
+  const closeVPanel = (panel) => {
+    const video = panel.querySelector('.vpanel__video');
+    if (video) { video.pause(); video.currentTime = 0; }
+    panel.querySelector('.vpanel__fig')?.classList.remove('is-playing');
+    panel.hidden = true;
+    // restaurar el botón de apertura
+    const id = panel.id.replace('vpanel-', '');
+    const openBtn = document.querySelector(`[data-video-close="${id}"]`);
+    if (openBtn) {
+      openBtn.textContent = 'ver proyecto completo ↗';
+      openBtn.dataset.videoOpen = id;
+      delete openBtn.dataset.videoClose;
+    }
+  };
+
+  document.addEventListener('click', (e) => {
+    const closeBtn = e.target.closest('[data-vpanel-close]') || e.target.closest('[data-video-close]');
+    if (closeBtn) {
+      const id = closeBtn.dataset.vpanelClose || closeBtn.dataset.videoClose;
+      const panel = document.getElementById(`vpanel-${id}`);
+      if (panel) closeVPanel(panel);
+    }
+  });
+
+  // hover + click en la figura del video
+  document.querySelectorAll('[data-vplay]').forEach(fig => {
+    const video = fig.querySelector('.vpanel__video');
+    if (!video) return;
+    fig.addEventListener('click', () => {
+      if (video.paused) {
+        video.play().catch(() => {});
+        fig.classList.add('is-playing');
+        video.controls = true;
+      }
+    });
+    video.addEventListener('pause', () => fig.classList.remove('is-playing'));
+    video.addEventListener('ended', () => { fig.classList.remove('is-playing'); video.controls = false; });
+  });
+
+  /* ---------- 9 · Escenarios que entran al scroll (Pingüino escalera + Casa tomada collage) ---------- */
   const stages = document.querySelectorAll('[data-stage], [data-pinguino]');
   stages.forEach(stage => {
     if (reduceMotion) { stage.classList.add('is-in'); return; }

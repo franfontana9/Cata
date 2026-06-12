@@ -645,3 +645,93 @@ body.has-cursor [data-cursor]{ cursor:none; }
   .reveal{ opacity:1; transform:none; transition:none; }
   html{ scroll-behavior:auto; }
 }
+
+/* ============================================================
+   PANEL DE VIDEO (La Pingüino)
+   ============================================================ */
+.vpanel{
+  background:var(--green);
+  margin-bottom:clamp(50px,8vh,90px);
+  overflow:hidden;
+  /* entrada suave al abrirse */
+  animation:vpanelIn .5s var(--ease) both;
+}
+.vpanel[hidden]{ display:none; }
+@keyframes vpanelIn{
+  from{ opacity:0; transform:translateY(24px); }
+  to{   opacity:1; transform:none; }
+}
+
+.vpanel__inner{
+  display:grid;
+  grid-template-columns:1fr 1.6fr;
+  gap:clamp(28px,5vw,72px);
+  align-items:center;
+  padding:clamp(40px,7vh,80px) var(--pad);
+  max-width:var(--maxw); margin:0 auto;
+}
+
+/* Columna izquierda: texto */
+.vpanel__label{ font-size:0.68rem; color:var(--orange); display:block; margin-bottom:18px; }
+.vpanel__title{
+  font-family:var(--sans); font-weight:200;
+  font-size:clamp(2.4rem,4.6vw,3.8rem);
+  line-height:1; letter-spacing:-0.03em;
+  color:var(--cream);
+  margin-bottom:16px;
+}
+.vpanel__sub{ font-size:0.72rem; color:rgba(244,233,205,0.55); margin-bottom:clamp(28px,4vh,44px); }
+.vpanel__close{
+  display:inline-block;
+  padding:12px 24px;
+  border:1px solid rgba(244,233,205,0.3);
+  color:var(--cream); font-size:0.72rem; letter-spacing:0.04em;
+  background:none;
+  transition:background .3s var(--ease), border-color .3s var(--ease);
+}
+.vpanel__close:hover{ background:rgba(244,233,205,0.08); border-color:rgba(244,233,205,0.7); }
+
+/* Columna derecha: video con overlay de hover */
+.vpanel__fig{
+  position:relative; margin:0;
+  cursor:pointer;
+}
+.vpanel__video{
+  display:block; width:100%;
+  box-shadow:0 40px 70px -30px rgba(0,0,0,0.6);
+  transition:opacity .4s var(--ease);
+}
+/* velo + ícono de play centrado */
+.vpanel__veil{
+  position:absolute; inset:0;
+  display:flex; align-items:center; justify-content:center;
+  background:rgba(23,57,31,0.18);
+  transition:background .4s var(--ease), opacity .4s var(--ease);
+}
+.vpanel__play{
+  width:clamp(52px,6vw,72px); height:clamp(52px,6vw,72px);
+  border:1.5px solid rgba(244,233,205,0.8);
+  border-radius:50%;
+  display:flex; align-items:center; justify-content:center;
+  color:var(--cream);
+  transition:transform .35s var(--ease), background .35s var(--ease);
+}
+.vpanel__play svg{ margin-left:4px; width:clamp(14px,1.6vw,20px); height:auto; }
+
+/* hover: video baja opacidad, play se agranda levemente */
+.vpanel__fig:hover .vpanel__video{ opacity:0.65; }
+.vpanel__fig:hover .vpanel__veil{ background:rgba(23,57,31,0.32); }
+.vpanel__fig:hover .vpanel__play{ transform:scale(1.1); background:rgba(244,233,205,0.1); }
+
+/* cuando el video está reproduciéndose: ocultar el velo */
+.vpanel__fig.is-playing .vpanel__veil{ opacity:0; pointer-events:none; }
+.vpanel__fig.is-playing .vpanel__video{ opacity:1; }
+
+/* mobile: columna única */
+@media (max-width:720px){
+  .vpanel__inner{ grid-template-columns:1fr; }
+}
+@media (prefers-reduced-motion: reduce){
+  .vpanel{ animation:none; }
+  .vpanel__video, .vpanel__veil, .vpanel__play{ transition:none; }
+}

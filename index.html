@@ -167,8 +167,7 @@
             pensados como un objeto y un recorrido. Identidad que se sostiene del detalle
             material a la pieza final.
           </p>
-          <a class="feature__btn mono" href="assets/proyectos/pinguino/la-pinguino-proyecto.pdf"
-             target="_blank" rel="noopener" data-cursor>ver proyecto completo ↗</a>
+          <button class="feature__btn mono" type="button" data-cursor data-video-open="pinguino">ver proyecto completo ↗</button>
         </div>
 
         <!-- Escenario: las 3 imágenes flotan en escalera y entran de abajo hacia arriba al hacer scroll.
@@ -205,6 +204,27 @@
           </figure>
         </div>
       </article>
+
+      <!-- Panel de video: La Pingüino (se muestra al hacer click en "ver proyecto completo") -->
+      <div class="vpanel" id="vpanel-pinguino" hidden aria-label="La Pingüino — proyecto completo">
+        <div class="vpanel__inner">
+          <div class="vpanel__info reveal">
+            <span class="vpanel__label mono">№ 01 · proyecto completo</span>
+            <h3 class="vpanel__title">La Pingüino.</h3>
+            <p class="vpanel__sub mono">Identidad de marca · Sistema visual · Packaging</p>
+            <button class="vpanel__close mono" type="button" data-vpanel-close="pinguino">↑ cerrar</button>
+          </div>
+          <figure class="vpanel__fig" data-vplay>
+            <video class="vpanel__video" src="assets/proyectos/pinguino/la-pinguino.mp4"
+                   preload="metadata" playsinline></video>
+            <div class="vpanel__veil" aria-hidden="true">
+              <div class="vpanel__play">
+                <svg width="22" height="26" viewBox="0 0 22 26" fill="none" aria-hidden="true"><path d="M2 2l18 11L2 24V2z" fill="currentColor"/></svg>
+              </div>
+            </div>
+          </figure>
+        </div>
+      </div>
 
       <!-- Resto de proyectos · grilla editorial descendente -->
       <div class="cases">
@@ -479,6 +499,6 @@
 
   </main>
 
-  <script src="js/main.js" defer></script>
+<script src="js/main.js" defer></script>
 </body>
 </html>
