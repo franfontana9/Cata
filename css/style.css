@@ -175,6 +175,9 @@ body.has-cursor [data-cursor]{ cursor:none; }
    FOLIO + ENCABEZADOS DE SECCIÓN
    ============================================================ */
 .section{ position:relative; z-index:3; padding:clamp(80px,12vh,150px) var(--pad); max-width:var(--maxw); margin:0 auto; }
+/* Proyectos: menos aire arriba (más cerca de la sección anterior), más aire debajo del encabezado */
+#proyectos{ padding-top:clamp(36px,5vh,64px); }
+#proyectos .section__head{ margin-bottom:clamp(64px,11vh,130px); }
 
 .folio{
   display:flex; align-items:center; gap:14px;
