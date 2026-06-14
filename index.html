@@ -205,25 +205,18 @@
         </div>
       </article>
 
-      <!-- Panel de video: La Pingüino (se muestra al hacer click en "ver proyecto completo") -->
-      <div class="vpanel" id="vpanel-pinguino" hidden aria-label="La Pingüino — proyecto completo">
-        <div class="vpanel__inner">
-          <div class="vpanel__info reveal">
-            <span class="vpanel__label mono">№ 01 · proyecto completo</span>
-            <h3 class="vpanel__title">La Pingüino.</h3>
-            <p class="vpanel__sub mono">Identidad de marca · Sistema visual · Packaging</p>
-            <button class="vpanel__close mono" type="button" data-vpanel-close="pinguino">↑ cerrar</button>
-          </div>
-          <figure class="vpanel__fig" data-vplay>
-            <video class="vpanel__video" src="assets/proyectos/pinguino/la-pinguino.mp4"
-                   preload="metadata" playsinline></video>
-            <div class="vpanel__veil" aria-hidden="true">
-              <div class="vpanel__play">
-                <svg width="22" height="26" viewBox="0 0 22 26" fill="none" aria-hidden="true"><path d="M2 2l18 11L2 24V2z" fill="currentColor"/></svg>
-              </div>
+      <!-- Panel de video: La Pingüino -->
+      <div class="vpanel" id="vpanel-pinguino" hidden>
+        <button class="vpanel__close mono" type="button" data-vpanel-close="pinguino">↑ cerrar</button>
+        <figure class="vpanel__fig" data-vplay>
+          <video class="vpanel__video" src="assets/proyectos/pinguino/la-pinguino.mp4"
+                 controls preload="metadata" playsinline></video>
+          <div class="vpanel__veil" aria-hidden="true">
+            <div class="vpanel__play">
+              <svg width="20" height="24" viewBox="0 0 22 26" fill="none" aria-hidden="true"><path d="M2 2l18 11L2 24V2z" fill="currentColor"/></svg>
             </div>
-          </figure>
-        </div>
+          </div>
+        </figure>
       </div>
 
       <!-- Resto de proyectos · grilla editorial descendente -->

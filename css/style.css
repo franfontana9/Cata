@@ -365,9 +365,11 @@ body.has-cursor [data-cursor]{ cursor:none; }
 .feature__btn{
   display:inline-block; margin-top:24px;
   padding:13px 26px;
+  background:none;
   border:1px solid var(--orange); color:var(--orange);
   font-size:0.74rem; letter-spacing:0.04em;
   transition:background .35s var(--ease), color .35s var(--ease);
+  cursor:pointer;
 }
 .feature__btn:hover{ background:var(--orange); color:var(--cream); }
 @media (hover:none){ .feature__open{ opacity:1; transform:translate(-50%,0); } }
@@ -651,86 +653,59 @@ body.has-cursor [data-cursor]{ cursor:none; }
    ============================================================ */
 .vpanel{
   background:var(--green);
+  padding:clamp(28px,5vh,52px) var(--pad);
   margin-bottom:clamp(50px,8vh,90px);
-  overflow:hidden;
-  /* entrada suave al abrirse */
-  animation:vpanelIn .5s var(--ease) both;
+  animation:vpanelIn .45s var(--ease) both;
 }
 .vpanel[hidden]{ display:none; }
 @keyframes vpanelIn{
-  from{ opacity:0; transform:translateY(24px); }
+  from{ opacity:0; transform:translateY(20px); }
   to{   opacity:1; transform:none; }
 }
 
-.vpanel__inner{
-  display:grid;
-  grid-template-columns:1fr 1.6fr;
-  gap:clamp(28px,5vw,72px);
-  align-items:center;
-  padding:clamp(40px,7vh,80px) var(--pad);
-  max-width:var(--maxw); margin:0 auto;
-}
-
-/* Columna izquierda: texto */
-.vpanel__label{ font-size:0.68rem; color:var(--orange); display:block; margin-bottom:18px; }
-.vpanel__title{
-  font-family:var(--sans); font-weight:200;
-  font-size:clamp(2.4rem,4.6vw,3.8rem);
-  line-height:1; letter-spacing:-0.03em;
-  color:var(--cream);
-  margin-bottom:16px;
-}
-.vpanel__sub{ font-size:0.72rem; color:rgba(244,233,205,0.55); margin-bottom:clamp(28px,4vh,44px); }
 .vpanel__close{
-  display:inline-block;
-  padding:12px 24px;
-  border:1px solid rgba(244,233,205,0.3);
-  color:var(--cream); font-size:0.72rem; letter-spacing:0.04em;
-  background:none;
-  transition:background .3s var(--ease), border-color .3s var(--ease);
+  display:block; margin:0 0 18px auto;
+  background:none; border:1px solid rgba(244,233,205,0.3);
+  color:var(--cream); font-size:0.7rem; letter-spacing:0.05em;
+  padding:8px 18px; cursor:pointer;
+  transition:border-color .25s var(--ease), background .25s var(--ease);
 }
-.vpanel__close:hover{ background:rgba(244,233,205,0.08); border-color:rgba(244,233,205,0.7); }
+.vpanel__close:hover{ border-color:rgba(244,233,205,0.8); background:rgba(244,233,205,0.07); }
 
-/* Columna derecha: video con overlay de hover */
+/* figura: video con overlay de play */
 .vpanel__fig{
   position:relative; margin:0;
+  max-width:var(--maxw); margin-inline:auto;
   cursor:pointer;
 }
 .vpanel__video{
   display:block; width:100%;
-  box-shadow:0 40px 70px -30px rgba(0,0,0,0.6);
+  box-shadow:0 32px 64px -28px rgba(0,0,0,0.7);
   transition:opacity .4s var(--ease);
 }
-/* velo + ícono de play centrado */
 .vpanel__veil{
   position:absolute; inset:0;
   display:flex; align-items:center; justify-content:center;
-  background:rgba(23,57,31,0.18);
-  transition:background .4s var(--ease), opacity .4s var(--ease);
+  transition:opacity .4s var(--ease);
 }
 .vpanel__play{
-  width:clamp(52px,6vw,72px); height:clamp(52px,6vw,72px);
-  border:1.5px solid rgba(244,233,205,0.8);
+  width:clamp(56px,6vw,76px); height:clamp(56px,6vw,76px);
+  border:1.5px solid rgba(244,233,205,0.85);
   border-radius:50%;
   display:flex; align-items:center; justify-content:center;
   color:var(--cream);
   transition:transform .35s var(--ease), background .35s var(--ease);
 }
-.vpanel__play svg{ margin-left:4px; width:clamp(14px,1.6vw,20px); height:auto; }
+.vpanel__play svg{ margin-left:4px; }
 
-/* hover: video baja opacidad, play se agranda levemente */
-.vpanel__fig:hover .vpanel__video{ opacity:0.65; }
-.vpanel__fig:hover .vpanel__veil{ background:rgba(23,57,31,0.32); }
-.vpanel__fig:hover .vpanel__play{ transform:scale(1.1); background:rgba(244,233,205,0.1); }
+/* hover: opacidad baja + play crece */
+.vpanel__fig:hover .vpanel__video{ opacity:0.6; }
+.vpanel__fig:hover .vpanel__play{ transform:scale(1.12); background:rgba(244,233,205,0.1); }
 
-/* cuando el video está reproduciéndose: ocultar el velo */
+/* reproduciendo: ocultar overlay */
 .vpanel__fig.is-playing .vpanel__veil{ opacity:0; pointer-events:none; }
 .vpanel__fig.is-playing .vpanel__video{ opacity:1; }
 
-/* mobile: columna única */
-@media (max-width:720px){
-  .vpanel__inner{ grid-template-columns:1fr; }
-}
 @media (prefers-reduced-motion: reduce){
   .vpanel{ animation:none; }
   .vpanel__video, .vpanel__veil, .vpanel__play{ transition:none; }
