@@ -511,7 +511,11 @@ body.has-cursor [data-cursor]{ cursor:none; }
 }
 .llegamos-media__img{ margin:0; }
 .llegamos-media__img img,
-.casa-tomada-texto img{ width:100%; display:block; }
+.casa-tomada-texto img{
+  display:block;
+  width:auto; max-width:100%;
+  max-height:clamp(220px,36vh,380px);
+}
 .llegamos-media__video{
   width:100%; display:block;
   box-shadow:0 24px 50px -24px rgba(23,57,31,0.35);
