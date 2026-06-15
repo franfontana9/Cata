@@ -302,19 +302,23 @@ body.has-cursor [data-cursor]{ cursor:none; }
   overflow:hidden;
 }
 .feature__bg-video{
-  position:absolute; inset:0; z-index:0; overflow:hidden;
+  position:absolute; top:0; bottom:0;
+  left:50%; width:100vw; transform:translateX(-50%);
+  z-index:0; overflow:hidden;
   opacity:0.35;
 }
 .feature__bg-video video{
   position:absolute; top:50%; left:50%;
-  width:100%; height:100%;
-  min-width:100%; min-height:100%;
+  width:100vw; height:56.25vw;
+  min-width:177.78vh; min-height:100%;
   object-fit:cover;
   transform:translate(-50%,-50%);
   pointer-events:none;
 }
 .feature__bg-veil{
-  position:absolute; inset:0; z-index:1;
+  position:absolute; top:0; bottom:0;
+  left:50%; width:100vw; transform:translateX(-50%);
+  z-index:1;
   background:radial-gradient(120% 90% at 30% 40%, rgba(244,233,205,0.55), rgba(244,233,205,0.72));
 }
 .feature__info{ position:relative; z-index:2; max-width:60ch; }
