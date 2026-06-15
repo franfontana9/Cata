@@ -497,10 +497,7 @@ body.has-cursor [data-cursor]{ cursor:none; }
 }
 .casa-tomada-texto{
   margin:0; flex:1;
-  opacity:0; transform:translateY(30px);
-  transition:opacity .9s var(--ease), transform 1.1s var(--ease);
 }
-.casa-tomada-texto.is-in{ opacity:1; transform:none; }
 .casa-tomada-texto img{ width:100%; display:block; }
 @media (max-width:720px){
   .casa-tomada-row{ flex-direction:column; }
