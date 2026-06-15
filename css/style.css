@@ -463,10 +463,23 @@ body.has-cursor [data-cursor]{ cursor:none; }
 }
 .case__btn:hover{ background:var(--orange); color:var(--cream); }
 
+.casa-tomada-layout{
+  display:grid; grid-template-columns:1fr 1fr;
+  gap:clamp(24px,4vw,64px); align-items:center;
+  margin-top:clamp(28px,5vh,52px);
+}
+.casa-tomada-texto{
+  margin:0;
+  opacity:0; transform:translateY(30px);
+  transition:opacity .9s var(--ease), transform 1.1s var(--ease);
+}
+.casa-tomada-texto.is-in{ opacity:1; transform:none; }
+.casa-tomada-texto img{ width:100%; display:block; }
+@media (max-width:720px){ .casa-tomada-layout{ grid-template-columns:1fr; } }
+
 .collage-stage{
   position:relative; width:100%;
   height:clamp(460px, 72vh, 760px);
-  margin-top:clamp(28px,5vh,52px);
 }
 .collage-card{
   position:absolute; display:block;
