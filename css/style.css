@@ -307,16 +307,17 @@ body.has-cursor [data-cursor]{ cursor:none; }
   display:block;
 }
 .sobre__nat-word{
-  position:absolute; bottom:0; left:0; right:0;
-  font-family:var(--sans); font-weight:200;
-  font-size:clamp(5rem,13vw,14rem);
-  line-height:0.9;
+  position:absolute; top:50%; left:0; right:0;
+  font-family:var(--sans); font-weight:700;
+  font-size:clamp(5rem,13vw,15rem);
+  line-height:0.85;
   color:var(--cream);
-  padding:0 clamp(20px,3vw,52px) clamp(16px,2vh,36px);
-  letter-spacing:-0.03em;
-  mix-blend-mode:overlay;
+  padding:0 clamp(20px,3vw,52px);
+  letter-spacing:-0.04em;
+  mix-blend-mode:difference;
   will-change:transform;
   pointer-events:none;
+  user-select:none;
   text-transform:lowercase;
 }
 

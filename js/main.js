@@ -241,9 +241,11 @@
   const hscrollWrap  = document.getElementById('sobreHscroll');
   const hscrollTrack = document.getElementById('sobreTrack');
   if (hscrollWrap && hscrollTrack) {
-    const natFigs = hscrollTrack.querySelectorAll('.sobre__nat');
-    const words   = hscrollTrack.querySelectorAll('.sobre__nat-word');
-    const total   = natFigs.length;
+    const words = hscrollTrack.querySelectorAll('.sobre__nat-word');
+    const total = words.length;
+    /* centros distribuidos: 0.1 · 0.5 · 0.9 para que las 3 palabras
+       tengan margen para entrar y salir dentro del rango 0-1 */
+    const centers = [0.1, 0.5, 0.9];
 
     const updateHscroll = () => {
       const rect     = hscrollWrap.getBoundingClientRect();
@@ -251,12 +253,12 @@
       const maxX     = hscrollTrack.scrollWidth - window.innerWidth;
       hscrollTrack.style.transform = `translateX(${-progress * maxX}px)`;
 
-      /* cada palabra sube de abajo-a-arriba según qué tan centrada está su imagen */
       words.forEach((word, i) => {
-        const center = total > 1 ? i / (total - 1) : 0.5;
-        /* cuando progress == center la palabra está centrada → translateY(0)
-           antes: aparece desde abajo (+120%), después: sube por arriba (-120%) */
-        const yPct = (center - progress) * 220;
+        const center = centers[i] ?? 0.5;
+        /* top:50% es el ancla → translateY(-50%) = centrada verticalmente.
+           Añadimos un offset que la mueve: entra desde abajo (+100%) y
+           sale por arriba (-200%) conforme avanza el scroll. */
+        const yPct = -50 + (center - progress) * 280;
         word.style.transform = `translateY(${yPct}%)`;
       });
     };
