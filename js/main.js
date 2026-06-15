@@ -237,4 +237,15 @@
     io.observe(stage);
   });
 
+  /* ---------- 9 · Lightbox infografías ---------- */
+  const lb    = document.getElementById('lightbox');
+  const lbImg = lb.querySelector('.lightbox__img');
+  const lbClose = lb.querySelector('.lightbox__close');
+  const openLb  = img => { lbImg.src = img.src; lbImg.alt = img.alt; lb.classList.add('is-open'); };
+  const closeLb = ()  => { lb.classList.remove('is-open'); lbImg.src = ''; };
+  document.querySelectorAll('[data-lightbox]').forEach(img => img.addEventListener('click', () => openLb(img)));
+  lbClose.addEventListener('click', closeLb);
+  lb.addEventListener('click', e => { if (e.target === lb) closeLb(); });
+  document.addEventListener('keydown', e => { if (e.key === 'Escape') closeLb(); });
+
 })();

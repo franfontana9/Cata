@@ -541,6 +541,21 @@ body.has-cursor [data-cursor]{ cursor:none; }
 /* par de imágenes más juntas (Rolling Stones): escenario más bajo */
 .collage-stage--pair{ height:clamp(380px, 56vh, 600px); }
 .collage-stage--pair .collage-card img{ aspect-ratio:auto; object-fit:contain; }
+.info-card{ cursor:zoom-in; }
+.lightbox{
+  display:none; position:fixed; inset:0; z-index:1000;
+  background:rgba(10,20,12,0.92);
+  align-items:center; justify-content:center;
+  padding:clamp(20px,4vw,60px);
+}
+.lightbox.is-open{ display:flex; }
+.lightbox__img{ max-width:100%; max-height:100%; object-fit:contain; box-shadow:0 40px 80px rgba(0,0,0,0.6); }
+.lightbox__close{
+  position:absolute; top:20px; right:24px;
+  background:none; border:none; color:var(--cream);
+  font-size:1.4rem; cursor:pointer; opacity:0.7; transition:opacity .2s;
+}
+.lightbox__close:hover{ opacity:1; }
 /* escalera de dos tapas (Vinilos): dos cuadrados chicos en diagonal */
 .collage-stage--stair{ height:clamp(360px, 52vh, 560px); }
 .collage-stage--stair .collage-card{ width:clamp(150px, 19vw, 250px); }

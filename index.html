@@ -345,11 +345,11 @@
             a una lectura clara y visualmente respirada.
           </p>
           <div class="collage-stage collage-stage--pair" data-stage>
-            <div class="collage-card" style="--rot:-4deg; --d:.1s; top:8%; left:4%;">
-              <img src="assets/proyectos/infografias/info1.jpg" alt="Infografía 01" loading="lazy" />
+            <div class="collage-card info-card" style="--rot:-4deg; --d:.1s; top:8%; left:14%;">
+              <img src="assets/proyectos/infografias/info1.jpg" alt="Infografía 01" loading="lazy" data-lightbox />
             </div>
-            <div class="collage-card" style="--rot:5deg; --d:.3s; top:12%; left:42%;">
-              <img src="assets/proyectos/infografias/info2.jpg" alt="Infografía 02" loading="lazy" />
+            <div class="collage-card info-card" style="--rot:5deg; --d:.3s; top:12%; left:53%;">
+              <img src="assets/proyectos/infografias/info2.jpg" alt="Infografía 02" loading="lazy" data-lightbox />
             </div>
           </div>
         </article>
@@ -453,5 +453,9 @@
   </main>
 
 <script src="js/main.js" defer></script>
+  <div class="lightbox" id="lightbox" aria-hidden="true">
+    <button class="lightbox__close" aria-label="Cerrar">✕</button>
+    <img class="lightbox__img" src="" alt="" />
+  </div>
 </body>
 </html>
