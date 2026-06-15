@@ -452,6 +452,24 @@ body.has-cursor [data-cursor]{ cursor:none; }
 .collage-stage--three .collage-card{ width:clamp(140px, 17vw, 230px); }
 /* el pin es apaisado: encuadrar al frente (corazón de ramas) */
 .collage-card--pin img{ object-position:18% center; }
+/* layout imagen + video (Llegamos, pero ¿a qué costo?) */
+.llegamos-media{
+  display:grid;
+  grid-template-columns:1fr 1.4fr;
+  gap:clamp(20px,3vw,48px);
+  align-items:center;
+  margin-top:clamp(28px,4vh,48px);
+}
+.llegamos-media__img{ margin:0; }
+.llegamos-media__img img{ width:100%; display:block; }
+.llegamos-media__video{
+  width:100%; display:block;
+  box-shadow:0 24px 50px -24px rgba(23,57,31,0.35);
+}
+@media (max-width:720px){
+  .llegamos-media{ grid-template-columns:1fr; }
+}
+
 /* imagen única Perdidos en Tokio */
 .tokio-img{
   margin-top:clamp(28px,4vh,48px);
