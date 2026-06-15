@@ -237,27 +237,4 @@
     io.observe(stage);
   });
 
-  /* ---------- 9 · Lightbox para infografías ---------- */
-  const lightbox    = document.getElementById('lightbox');
-  const lightboxImg = lightbox.querySelector('.lightbox__img');
-  const lightboxClose = lightbox.querySelector('.lightbox__close');
-
-  document.querySelectorAll('[data-lightbox]').forEach(img => {
-    img.addEventListener('click', () => {
-      lightboxImg.src = img.src;
-      lightboxImg.alt = img.alt;
-      lightbox.classList.add('is-open');
-      lightbox.setAttribute('aria-hidden', 'false');
-    });
-  });
-
-  const closeLightbox = () => {
-    lightbox.classList.remove('is-open');
-    lightbox.setAttribute('aria-hidden', 'true');
-    lightboxImg.src = '';
-  };
-  lightboxClose.addEventListener('click', closeLightbox);
-  lightbox.addEventListener('click', e => { if (e.target === lightbox) closeLightbox(); });
-  document.addEventListener('keydown', e => { if (e.key === 'Escape') closeLightbox(); });
-
 })();
