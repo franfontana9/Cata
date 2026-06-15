@@ -540,6 +540,7 @@ body.has-cursor [data-cursor]{ cursor:none; }
 @media (max-width:720px){ .tokio-row{ grid-template-columns:1fr; } }
 /* par de imágenes más juntas (Rolling Stones): escenario más bajo */
 .collage-stage--pair{ height:clamp(380px, 56vh, 600px); }
+.collage-stage--pair .collage-card img{ aspect-ratio:auto; object-fit:contain; }
 /* escalera de dos tapas (Vinilos): dos cuadrados chicos en diagonal */
 .collage-stage--stair{ height:clamp(360px, 52vh, 560px); }
 .collage-stage--stair .collage-card{ width:clamp(150px, 19vw, 250px); }
