@@ -391,6 +391,7 @@ body.has-cursor [data-cursor]{ cursor:none; }
 .pinguino-full{
   position:relative; z-index:2;
   margin-top:clamp(32px,5vh,64px);
+  margin-bottom:clamp(64px,12vh,140px);
   opacity:0; transform:translateY(30px);
   transition:opacity .9s var(--ease), transform 1.1s var(--ease);
 }
