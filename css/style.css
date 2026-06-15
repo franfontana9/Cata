@@ -496,7 +496,6 @@ body.has-cursor [data-cursor]{ cursor:none; }
   width:100%; display:block;
   box-shadow:0 24px 50px -24px rgba(23,57,31,0.35);
 }
-.casa-tomada-texto{ margin:0; }
 @media (max-width:720px){
   .casa-tomada-row{ grid-template-columns:1fr; }
 }
@@ -510,12 +509,11 @@ body.has-cursor [data-cursor]{ cursor:none; }
   margin-top:clamp(28px,4vh,48px);
 }
 .llegamos-media__img{ margin:0; }
-.llegamos-media__img img,
-.casa-tomada-texto img{
-  display:block;
-  width:auto; max-width:100%;
-  max-height:clamp(220px,36vh,380px);
+.proyecto-texto{
+  font-family:var(--sans); font-size:clamp(0.95rem,1.4vw,1.15rem);
+  color:var(--green); line-height:1.7;
 }
+.proyecto-texto strong{ font-weight:600; }
 .llegamos-media__video{
   width:100%; display:block;
   box-shadow:0 24px 50px -24px rgba(23,57,31,0.35);
