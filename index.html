@@ -340,12 +340,14 @@
             </div>
           </header>
           <p class="case__cat mono">Comunicación visual · Datos</p>
-          <div class="case__pair">
-            <figure class="media media--portrait reveal">
-              <img src="assets/proyectos/infografias/info1.jpg" alt="Infografía 01" loading="lazy" />
+          <div class="case__pair infografias__pair">
+            <figure class="media media--info reveal" data-cursor>
+              <img src="assets/proyectos/infografias/info1.jpg" alt="Infografía 01" loading="lazy" data-lightbox />
+              <span class="info__zoom mono">↗ ampliar</span>
             </figure>
-            <figure class="media media--portrait reveal">
-              <img src="assets/proyectos/infografias/info2.jpg" alt="Infografía 02" loading="lazy" />
+            <figure class="media media--info reveal" data-cursor>
+              <img src="assets/proyectos/infografias/info2.jpg" alt="Infografía 02" loading="lazy" data-lightbox />
+              <span class="info__zoom mono">↗ ampliar</span>
             </figure>
           </div>
           <p class="case__desc">
@@ -453,5 +455,10 @@
   </main>
 
 <script src="js/main.js" defer></script>
+  <!-- Lightbox -->
+  <div class="lightbox" id="lightbox" aria-hidden="true">
+    <button class="lightbox__close" aria-label="Cerrar">✕</button>
+    <img class="lightbox__img" src="" alt="" />
+  </div>
 </body>
 </html>
