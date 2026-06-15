@@ -237,16 +237,30 @@
     io.observe(stage);
   });
 
-  /* ---------- 9 · Scroll horizontal — imágenes Sobre mí ---------- */
+  /* ---------- 9 · Scroll horizontal panorámico + palabras ascendentes — Sobre mí ---------- */
   const hscrollWrap  = document.getElementById('sobreHscroll');
   const hscrollTrack = document.getElementById('sobreTrack');
   if (hscrollWrap && hscrollTrack) {
+    const natFigs = hscrollTrack.querySelectorAll('.sobre__nat');
+    const words   = hscrollTrack.querySelectorAll('.sobre__nat-word');
+    const total   = natFigs.length;
+
     const updateHscroll = () => {
       const rect     = hscrollWrap.getBoundingClientRect();
       const progress = Math.max(0, Math.min(1, -rect.top / (rect.height - window.innerHeight)));
       const maxX     = hscrollTrack.scrollWidth - window.innerWidth;
       hscrollTrack.style.transform = `translateX(${-progress * maxX}px)`;
+
+      /* cada palabra sube de abajo-a-arriba según qué tan centrada está su imagen */
+      words.forEach((word, i) => {
+        const center = total > 1 ? i / (total - 1) : 0.5;
+        /* cuando progress == center la palabra está centrada → translateY(0)
+           antes: aparece desde abajo (+120%), después: sube por arriba (-120%) */
+        const yPct = (center - progress) * 220;
+        word.style.transform = `translateY(${yPct}%)`;
+      });
     };
+
     window.addEventListener('scroll', updateHscroll, { passive: true });
     updateHscroll();
   }
