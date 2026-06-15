@@ -241,10 +241,8 @@
   const hscrollWrap  = document.getElementById('sobreHscroll');
   const hscrollTrack = document.getElementById('sobreTrack');
   if (hscrollWrap && hscrollTrack) {
-    const words = hscrollTrack.querySelectorAll('.sobre__nat-word');
-    const total = words.length;
-    /* centros distribuidos: 0.1 · 0.5 · 0.9 para que las 3 palabras
-       tengan margen para entrar y salir dentro del rango 0-1 */
+    const words   = hscrollTrack.querySelectorAll('.sobre__nat-word');
+    /* progress en el que cada imagen está centrada en pantalla */
     const centers = [0.1, 0.5, 0.9];
 
     const updateHscroll = () => {
@@ -253,13 +251,14 @@
       const maxX     = hscrollTrack.scrollWidth - window.innerWidth;
       hscrollTrack.style.transform = `translateX(${-progress * maxX}px)`;
 
+      const figH = window.innerHeight * 1.6; /* referencia en px para el recorrido vertical */
       words.forEach((word, i) => {
         const center = centers[i] ?? 0.5;
-        /* top:50% es el ancla → translateY(-50%) = centrada verticalmente.
-           Añadimos un offset que la mueve: entra desde abajo (+100%) y
-           sale por arriba (-200%) conforme avanza el scroll. */
-        const yPct = -50 + (center - progress) * 280;
-        word.style.transform = `translateY(${yPct}%)`;
+        /* yPx > 0 → palabra debajo de la figura (oculta por overflow:hidden)
+           yPx = 0 → palabra en su posición natural (bottom-right, visible)
+           yPx < 0 → palabra asciende y sale por arriba (oculta)         */
+        const yPx = (center - progress) * figH;
+        word.style.transform = `translateY(${yPx}px)`;
       });
     };
 
