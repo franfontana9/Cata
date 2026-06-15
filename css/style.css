@@ -294,16 +294,35 @@ body.has-cursor [data-cursor]{ cursor:none; }
    ============================================================ */
 /* Proyecto destacado */
 .feature{
+  position:relative;
   display:flex; flex-direction:column; gap:clamp(20px,3vh,40px);
   padding-bottom:clamp(50px,8vh,90px);
   margin-bottom:clamp(50px,8vh,90px);
   border-bottom:1px solid var(--hair);
+  overflow:hidden;
 }
+.feature__bg-video{
+  position:absolute; inset:0; z-index:0; overflow:hidden;
+  opacity:0.35;
+}
+.feature__bg-video video{
+  position:absolute; top:50%; left:50%;
+  width:100%; height:100%;
+  min-width:100%; min-height:100%;
+  object-fit:cover;
+  transform:translate(-50%,-50%);
+  pointer-events:none;
+}
+.feature__bg-veil{
+  position:absolute; inset:0; z-index:1;
+  background:radial-gradient(120% 90% at 30% 40%, rgba(244,233,205,0.55), rgba(244,233,205,0.72));
+}
+.feature__info{ position:relative; z-index:2; max-width:60ch; }
 .feature__info{ max-width:60ch; }
 
 /* Escenario en escalera: las 3 imágenes completas, flotando */
 .feature__stage{
-  position:relative; width:100%;
+  position:relative; z-index:2; width:100%;
   height:clamp(460px, 80vh, 880px);
 }
 .pinguino-slide{
