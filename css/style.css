@@ -387,6 +387,16 @@ body.has-cursor [data-cursor]{ cursor:none; }
   .feature__stage.is-in .pinguino-extra img{ animation:none; }
 }
 
+/* Imagen completa debajo del escenario flotante */
+.pinguino-full{
+  position:relative; z-index:2;
+  margin-top:clamp(32px,5vh,64px);
+  opacity:0; transform:translateY(30px);
+  transition:opacity .9s var(--ease), transform 1.1s var(--ease);
+}
+.pinguino-full.is-in{ opacity:1; transform:none; }
+.pinguino-full img{ width:100%; display:block; box-shadow:0 30px 60px -30px rgba(23,57,31,0.35); }
+
 /* Botón de texto bajo la descripción */
 .feature__btn{
   display:inline-block; margin-top:24px;
