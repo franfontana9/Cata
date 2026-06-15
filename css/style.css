@@ -488,20 +488,18 @@ body.has-cursor [data-cursor]{ cursor:none; }
 .collage-card--pin img{ object-position:18% center; }
 /* video debajo de las imágenes (Casa tomada) */
 .casa-tomada-row{
-  display:flex; align-items:center; gap:clamp(24px,4vw,56px);
+  display:grid; grid-template-columns:1.4fr 1fr;
+  gap:clamp(20px,3vw,48px); align-items:center;
   margin-top:clamp(28px,4vh,48px);
 }
 .casa-tomada-video{
-  flex-shrink:0; width:48%; display:block;
+  width:100%; display:block;
   box-shadow:0 24px 50px -24px rgba(23,57,31,0.35);
 }
-.casa-tomada-texto{
-  margin:0; flex:1;
-}
+.casa-tomada-texto{ margin:0; }
 .casa-tomada-texto img{ width:100%; display:block; }
 @media (max-width:720px){
-  .casa-tomada-row{ flex-direction:column; }
-  .casa-tomada-video{ width:100%; }
+  .casa-tomada-row{ grid-template-columns:1fr; }
 }
 
 /* layout imagen + video (Llegamos, pero ¿a qué costo?) */
