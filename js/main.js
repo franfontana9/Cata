@@ -237,8 +237,23 @@
     io.observe(stage);
   });
 
-  /* ---------- 9 · Lightbox infografías ---------- */
+  /* ---------- 9 · Scroll horizontal — imágenes Sobre mí ---------- */
+  const hscrollWrap  = document.getElementById('sobreHscroll');
+  const hscrollTrack = document.getElementById('sobreTrack');
+  if (hscrollWrap && hscrollTrack) {
+    const updateHscroll = () => {
+      const rect     = hscrollWrap.getBoundingClientRect();
+      const progress = Math.max(0, Math.min(1, -rect.top / (rect.height - window.innerHeight)));
+      const maxX     = hscrollTrack.scrollWidth - window.innerWidth;
+      hscrollTrack.style.transform = `translateX(${-progress * maxX}px)`;
+    };
+    window.addEventListener('scroll', updateHscroll, { passive: true });
+    updateHscroll();
+  }
+
+  /* ---------- 10 · Lightbox infografías ---------- */
   const lb    = document.getElementById('lightbox');
+
   const lbImg = lb.querySelector('.lightbox__img');
   const lbClose = lb.querySelector('.lightbox__close');
   const openLb  = img => { lbImg.src = img.src; lbImg.alt = img.alt; lb.classList.add('is-open'); };

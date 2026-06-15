@@ -278,15 +278,32 @@ body.has-cursor [data-cursor]{ cursor:none; }
   border:1px solid var(--hair); border-radius:40px;
   padding:6px 14px;
 }
-/* Tres imágenes de naturaleza/textura componiendo abajo */
-.sobre__nat{ position:relative; overflow:hidden; }
+.sobre__portrait figcaption{ font-size:0.64rem; color:var(--green-soft); margin-top:10px; }
+
+/* Scroll horizontal por imágenes de naturaleza */
+.sobre__hscroll{
+  position:relative;
+  height:280vh;
+  margin-top:clamp(40px,6vh,80px);
+}
+.sobre__hscroll-sticky{
+  position:sticky; top:0;
+  height:100vh; overflow:hidden;
+  display:flex; align-items:center;
+}
+.sobre__hscroll-track{
+  display:flex; flex-direction:row;
+  gap:clamp(28px,4vw,64px);
+  padding:0 var(--pad);
+  will-change:transform;
+}
+.sobre__nat{
+  position:relative; overflow:hidden; flex-shrink:0;
+  width:clamp(260px,32vw,460px);
+  aspect-ratio:3/4;
+}
 .sobre__nat img{ width:100%; height:100%; object-fit:cover; transition:transform 1.2s var(--ease); }
 .sobre__nat:hover img{ transform:scale(1.04); }
-.sobre__nat--a{ grid-column:1 / span 4; aspect-ratio:3/4; margin-top:24px; }
-.sobre__nat--b{ grid-column:5 / span 4; aspect-ratio:3/4; margin-top:64px; }
-.sobre__nat--c{ grid-column:9 / span 4; aspect-ratio:3/4; margin-top:24px; }
-
-.sobre__portrait figcaption{ font-size:0.64rem; color:var(--green-soft); margin-top:10px; }
 .sobre__nat figcaption{ position:absolute; left:10px; bottom:10px; font-size:0.62rem; color:var(--cream); mix-blend-mode:difference; }
 
 /* ============================================================
@@ -717,9 +734,7 @@ body.has-cursor [data-cursor]{ cursor:none; }
   .materia__lab{ grid-template-columns:1fr; }
   .sobre__portrait{ grid-column:1 / span 7; }
   .sobre__text{ grid-column:1 / span 12; padding-top:24px; }
-  .sobre__nat--a{ grid-column:1 / span 6; margin-top:24px; }
-  .sobre__nat--b{ grid-column:7 / span 6; margin-top:24px; }
-  .sobre__nat--c{ grid-column:1 / span 12; aspect-ratio:16/9; }
+  .sobre__nat{ width:clamp(220px,75vw,340px); }
 }
 
 @media (max-width:720px){
@@ -743,7 +758,7 @@ body.has-cursor [data-cursor]{ cursor:none; }
   .materia__phrases{ grid-template-columns:1fr; gap:18px; }
   .hablemos__list{ grid-template-columns:1fr; }
   .home__scroll{ display:none; }
-  .sobre__nat--a,.sobre__nat--b{ grid-column:1 / span 12; aspect-ratio:16/10; margin-top:14px; }
+  .sobre__nat{ width:90vw; }
 }
 
 /* ---------- Accesibilidad: menos movimiento ---------- */
